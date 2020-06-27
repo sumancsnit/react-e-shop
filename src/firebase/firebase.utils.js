@@ -15,6 +15,7 @@ const config = {
 
 export const createUserProfileDocument = (userAuth, additionalData) => {
   if (!userAuth) return;
+  console.log(firestore.doc('users/suman'));
 };
 
 firebase.initializeApp(config);
