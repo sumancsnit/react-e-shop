@@ -1,7 +1,7 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Homepage from './pages/homepage/homepage.component';
-import { Switch, Route } from 'react-router-dom';
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up';
@@ -13,22 +13,25 @@ class App extends React.Component {
     this.state = {
       currentUser: null,
     };
+    this.unsubscribeFromAuth = () => null;
   }
-
-  unsubscribeFromAuth = null;
 
   componentDidMount() {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
-      this.setState({ currentUser: userAuth });
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
         userRef.onSnapshot((snapShot) => {
-          console.log('App -> componentDidMount -> snapShot', snapShot);
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data(),
+            },
+          });
         });
+      } else {
+        this.setState({ currentUser: userAuth });
       }
-
-      // this.setState({ currentUser: userAuth });
     });
   }
 
