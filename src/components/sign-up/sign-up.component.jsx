@@ -19,6 +19,12 @@ class SignUp extends React.Component {
     };
   }
 
+  handleChange = (event) => {
+    const { name, value } = event.target;
+
+    this.setState({ [name]: value });
+  };
+
   handleSubmit = async (event) => {
     event.preventDefault();
     const { displayName, email, password, confirmPassword } = this.state;
@@ -52,7 +58,7 @@ class SignUp extends React.Component {
       <div className='sign-up'>
         <h2 className='title'>I don&apos;t have a account</h2>
         <span>Sign up with your email and password</span>
-        <form className='sign-up=form' onSubmit={this.handleSumit}>
+        <form className='sign-up=form' onSubmit={this.handleSubmit}>
           <FormInput
             type='text'
             name='displayName'
