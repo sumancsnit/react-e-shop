@@ -14,7 +14,7 @@ class ShopPage extends React.Component {
 
   render() {
     const { collections } = this.state;
-    console.log('ShopPage -> render -> collections', collections);
+    // console.log('ShopPage -> render -> collections', collections);
     return (
       <div className='shop-page'>
         {collections.map(({ id, ...otherCollectionProps }) => (
