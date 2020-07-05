@@ -54,7 +54,7 @@ export const addCollectionAndDocuments = async (
     batch.set(newDocRef, obj); // set data on newDocRef
   });
 
-  // fire batch commits - create all data in firebase database
+  // fire batch commits - save all data in firebase database
   return await batch.commit();
 };
 
