@@ -38,6 +38,26 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   return userRef;
 };
 
+// save SHOP_DATA into firebase
+
+// export const addCollectionAndDocuments = async (
+//   collectionKey,
+//   objectsToAdd
+// ) => {
+//   const collectionRef = firestore.collection(collectionKey);
+
+//   // batch  to update data one by one
+//   const batch = firestore.batch();
+//   objectsToAdd.forEach((obj) => {
+//     // create new doc ref, set id automatically
+//     const newDocRef = collectionRef.doc();
+//     batch.set(newDocRef, obj); // set data on newDocRef
+//   });
+
+//   // fire batch commits - create all data in firebase database
+//   return await batch.commit();
+// };
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
