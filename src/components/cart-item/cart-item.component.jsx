@@ -8,8 +8,7 @@ const CartItem = ({ item: { imageUrl, price, name, quantity } }) => (
     <div className='item-details'>
       <div className='name'>{name}</div>
       <div className='price'>
-        {quantity} x {'\u20B9'}
-        {price}
+        {quantity} x ${price}
       </div>
     </div>
   </div>
