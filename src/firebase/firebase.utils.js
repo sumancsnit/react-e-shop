@@ -39,7 +39,6 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 };
 
 // save data into firebase
-
 export const addCollectionAndDocuments = async (
   collectionKey,
   objectsToAdd
@@ -56,6 +55,27 @@ export const addCollectionAndDocuments = async (
 
   // fire batch commits - save all data in firebase database
   return await batch.commit();
+};
+
+// get the data from firebse db anf modify it from array to objec with additional key: value,
+export const convertCollectionsSnapshotToMap = (collections) => {
+  const transformedCollection = collections.docs.map((doc) => {
+    // get the actual data
+    const { title, items } = doc.data();
+
+    return {
+      routeName: encodeURI(title.toLowerCase()), // ex 'hats'
+      id: doc.id,
+      title,
+      items,
+    };
+  });
+
+  // change the array to object with key as title and value as object
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
 };
 
 firebase.initializeApp(config);
