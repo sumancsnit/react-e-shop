@@ -22,3 +22,9 @@ export const selectIsCollectionFetching = createSelector(
   [selectShop],
   (shop) => shop.isFetcging
 );
+
+// check if collection is not fetched
+export const selectIsCollectionsLoaded = createSelector(
+  [selectShop],
+  (shop) => !!shop.collections
+);
