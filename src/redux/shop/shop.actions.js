@@ -19,20 +19,20 @@ export const fetchCollectionsFailure = (errorMessage) => ({
 });
 
 // thunk
-export const fetchCollectionsStartAsync = () => {
-  console.log('called');
-  return (dispatch) => {
-    const collectionRef = firestore.collection('collections');
-    dispatch(fetchCollectionsStart());
+// export const fetchCollectionsStartAsync = () => {
+//   console.log('called');
+//   return (dispatch) => {
+//     const collectionRef = firestore.collection('collections');
+//     dispatch(fetchCollectionsStart());
 
-    collectionRef
-      .get()
-      .then((snapshot) => {
-        const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-        dispatch(fetchCollectionsSuccess(collectionsMap));
-      })
-      .catch((error) => dispatch(fetchCollectionsFailure(error.message)));
-  };
-};
+//     collectionRef
+//       .get()
+//       .then((snapshot) => {
+//         const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
+//         dispatch(fetchCollectionsSuccess(collectionsMap));
+//       })
+//       .catch((error) => dispatch(fetchCollectionsFailure(error.message)));
+//   };
+// };
 
 //  Note: If redux-thunk middleware is enabled, any time you attempt to dispatch a function instead of an object, the middleware will call that function with dispatch method itself as the first argument
