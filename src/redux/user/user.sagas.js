@@ -85,3 +85,5 @@ export function* userSagas() {
     call(onSignOutStart),
   ]);
 }
+
+// Note: SIGN_OUT_START action is caught by saga, it is not written in reducer. saga fires CLEAR_CART and empty the cart
