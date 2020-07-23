@@ -22,12 +22,25 @@ const App = ({ checkUserSession, currentUser }) => {
 
   useEffect(() => {
     checkUserSession();
-    // return unsubscribeFromAuth();
+    // return () => unsubscribeFromAuth();
   }, [checkUserSession]);
 
   // componentWillUnmount() {
   //   this.unsubscribeFromAuth();
   // }
+
+  //   ComponentWillReceiveProps
+  // //Class
+  // componentWillReceiveProps(nextProps) {
+  //     if (nextProps.count !== this.props.count) {
+  //         console.log('count changed', nextProps.count);
+  //     }
+  // }
+
+  // //Hooks
+  // useEffect(() => {
+  //     console.log('count changed', props.count);
+  // }, [props.count])
 
   return (
     <div>
